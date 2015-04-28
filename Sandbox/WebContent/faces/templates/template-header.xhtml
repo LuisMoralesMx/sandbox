@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html 
+	xmlns="http://www.w3.org/1999/xhtml"  
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+   	xmlns:h="http://java.sun.com/jsf/html"  
+    xmlns:f="http://java.sun.com/jsf/core"  
+    xmlns:p="http://primefaces.org/ui">
+
+    <h:body>
+    	<ui:composition>
+    		<h:form id="headerForm">
+    		
+			   	<h:outputStylesheet library="css" name="style.css"  />    	    	 	
+		    	<h:outputStylesheet library="css" name="default.css"  />
+				
+				<span class="align-left">Welcome back #{loginController.userBean.firstName} #{loginController.userBean.lastName}!</span>
+				<span class="align-right">
+					<h:commandLink value="Logout" action="#{loginController.logout}" />
+				</span>
+				
+				<br></br>
+				<br></br>
+
+				<p:menubar>
+			 		<p:submenu label="Reports" icon="ui-icon-document">	            
+	                	<p:menuitem value="View HR Employee List" action="#{humanResourcesController.viewHrEmployees}" icon="ui-icon-document-b" ajax="false" />
+		                <p:menuitem value="View HR Candidate List" action="#{humanResourcesController.viewHrCandidates}" icon="ui-icon-document-b" ajax="false" />
+	        		</p:submenu>
+					
+	        		<f:facet name="options">
+	        			<p:commandButton action="#{loginController.returnHome}" value="Home" icon="ui-icon-home" ajax="false" />
+	        		</f:facet>   		
+				</p:menubar>
+		    	
+		    	<br></br>
+	    	</h:form>
+    	</ui:composition>
+    </h:body>
+</html>  

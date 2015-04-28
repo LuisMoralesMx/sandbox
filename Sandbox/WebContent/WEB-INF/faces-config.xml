@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config
+    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
+    version="2.2">
+    
+    <!-- Controllers -->  
+    <managed-bean>
+		<managed-bean-name>loginController</managed-bean-name>
+		<managed-bean-class>com.sandbox.controller.LoginController</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>userBean</property-name>
+			<property-class>com.sandbox.beans.UserBean</property-class>
+			<value>#{userBean}</value>
+		</managed-property>
+	</managed-bean>
+	
+	<managed-bean>
+		<managed-bean-name>humanResourcesController</managed-bean-name>
+		<managed-bean-class>com.sandbox.controller.HumanResourcesController</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>hrEmployeeBean</property-name>
+			<property-class>com.sandbox.beans.HrEmployeeBean</property-class>
+			<value>#{hrEmployeeBean}</value>
+		</managed-property>	
+	</managed-bean>
+	
+	<!-- Service Beans -->
+    <managed-bean>
+    	<managed-bean-name>userService</managed-bean-name>
+    	<managed-bean-class>com.sandbox.services.UserService</managed-bean-class>
+    	<managed-bean-scope>none</managed-bean-scope>
+    </managed-bean>
+	
+	<!-- Beans -->
+    <managed-bean>
+    	<managed-bean-name>userBean</managed-bean-name>
+    	<managed-bean-class>com.sandbox.beans.UserBean</managed-bean-class>
+    	<managed-bean-scope>none</managed-bean-scope>
+    </managed-bean>
+    
+    <managed-bean>
+    	<managed-bean-name>hrEmployeeBean</managed-bean-name>
+    	<managed-bean-class>com.sandbox.beans.HrEmployeeBean</managed-bean-class>
+    	<managed-bean-scope>none</managed-bean-scope>
+    </managed-bean>
+    
+    <managed-bean>
+    	<managed-bean-name>candidateBean</managed-bean-name>
+    	<managed-bean-class>com.sandbox.beans.CandidateBean</managed-bean-class>
+    	<managed-bean-scope>none</managed-bean-scope>
+    </managed-bean>
+     
+    <!-- Navigation --> 
+    <navigation-rule>
+    	<from-view-id>/login.xhtml</from-view-id>
+	    <navigation-case>
+	    	<from-action>#{loginController.loginAccess}</from-action>
+	        <from-outcome>success</from-outcome>
+	        <to-view-id>/faces/index.xhtml</to-view-id>
+	        <redirect />
+	    </navigation-case>
+	    <navigation-case>
+	    	<from-outcome>failure</from-outcome>
+	        <to-view-id>/faces/error.xhtml</to-view-id>
+	        <redirect />
+	    </navigation-case>
+	</navigation-rule>
+	
+	<!-- Navigation --> 
+    <navigation-rule>
+    	<from-view-id>*</from-view-id>
+	    <navigation-case>
+	    	<from-action>#{humanResourcesController.viewHrEmployees}</from-action>
+	        <from-outcome>success</from-outcome>
+	        <to-view-id>/faces/reports/view-hr-employees.xhtml</to-view-id>
+	        <redirect />
+	    </navigation-case>
+	    <navigation-case>
+	    	<from-action>#{humanResourcesController.viewHrCandidates}</from-action>
+	        <from-outcome>success</from-outcome>
+	        <to-view-id>/faces/reports/view-hr-candidates.xhtml</to-view-id>
+	        <redirect />
+	    </navigation-case>
+	    <navigation-case>
+	    	<from-outcome>error</from-outcome>
+	        <to-view-id>/faces/error.xhtml</to-view-id>
+	        <redirect />
+	    </navigation-case>
+	</navigation-rule>
+     
+</faces-config>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html 
+	xmlns="http://www.w3.org/1999/xhtml"  
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+   	xmlns:h="http://java.sun.com/jsf/html"  
+    xmlns:f="http://java.sun.com/jsf/core"  
+    xmlns:p="http://primefaces.org/ui">  
+  
+    <h:head>    
+    	<title>Sandbox | HR View Employee List</title>
+    </h:head>  
+
+    <h:body>
+    	
+    	<!-- HEADER -->
+    	<ui:insert name="header" >
+		  <ui:include src="/faces/templates/template-header.xhtml" />
+		</ui:insert>
+        
+        <!-- CONTENT -->
+        <div class="div-center-xx-large">HR View Employee List</div>
+        ​<hr width="50%" />
+        <br></br>
+        
+        <h:form id="hrEmployeeFormId"> 
+               
+	        <p:dataTable 
+	        	id="hrTableId"
+	        	var="bean" 
+	        	value="#{humanResourcesController.hrEmployeeList}" 
+	        	paginator="true"
+	        	paginatorPosition="bottom"
+	        	scrollable="true" 
+	        	scrollHeight="500"
+	        	rows="30"
+				style="font-size:12px;">
+	        	
+	        	<f:facet name="header">
+		        	<div align="right">
+			        	<h:commandLink>
+			                <h:graphicImage library="images" name="excel.png" width="24" />
+			                <p:dataExporter type="xls" target="hrTableId" fileName="hr-employee-list" />
+		   				</h:commandLink>
+	   				</div>
+   				</f:facet>
+	        
+			    <p:column headerText="First Name" width="85" sortBy="#{bean.firstName}">
+			        <h:outputText value="#{bean.firstName}" />
+			    </p:column>
+			 
+			    <p:column headerText="Middle Name" width="100" sortBy="#{bean.middleName}">
+			        <h:outputText value="#{bean.middleName}" />
+			    </p:column>
+			 
+			    <p:column headerText="Last Name" sortBy="#{bean.lastName}">
+			        <h:outputText value="#{bean.lastName}" />
+			    </p:column>
+			    
+			    <p:column headerText="Job Title" sortBy="#{bean.jobTitle}">
+			        <h:outputText value="#{bean.jobTitle}" />
+			    </p:column>
+			    
+			    <p:column headerText="Phone #" sortBy="#{bean.phoneNumber}">
+			        <h:outputText value="#{bean.phoneNumber}" />
+			    </p:column>
+			    
+			    <p:column headerText="Type" sortBy="#{bean.phoneNumberType}">
+			        <h:outputText value="#{bean.phoneNumberType}" />
+			    </p:column>
+			    
+			    <p:column headerText="Email" sortBy="#{bean.emailAddress}">
+			        <h:outputText value="#{bean.emailAddress}" />
+			    </p:column>
+			    
+			    <p:column headerText="Address" sortBy="#{bean.addressLine1}">
+			        <h:outputText value="#{bean.addressLine1}" />
+			    </p:column>
+			    
+			    <p:column headerText="City" sortBy="#{bean.city}">
+			        <h:outputText value="#{bean.city}" />
+			    </p:column>
+			    
+			    <p:column headerText="State" sortBy="#{bean.stateProvinceName}">
+			        <h:outputText value="#{bean.stateProvinceName}" />
+			    </p:column>
+			    
+			    <p:column headerText="ZIP Code" sortBy="#{bean.postalCode}">
+			        <h:outputText value="#{bean.postalCode}" />
+			    </p:column>
+			    
+			    <p:column headerText="Country" width="80" sortBy="#{bean.countryRegionName}">
+			        <h:outputText value="#{bean.countryRegionName}" />
+			    </p:column>
+			    
+			</p:dataTable>	
+				
+		</h:form>   
+		
+		<!-- FOOTER -->
+		<ui:insert name="footer" >
+		  <ui:include src="/faces/templates/template-footer.xhtml" />
+		</ui:insert>     
+    </h:body>
+</html>  

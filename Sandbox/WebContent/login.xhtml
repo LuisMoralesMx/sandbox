@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html 
+	xmlns="http://www.w3.org/1999/xhtml"  
+   	xmlns:h="http://java.sun.com/jsf/html"  
+    xmlns:f="http://java.sun.com/jsf/core"  
+    xmlns:p="http://primefaces.org/ui">  
+  
+    <h:head>    
+    	<h:outputStylesheet library="css" name="style.css"  />    
+    </h:head>  
+          
+    <h:body>
+        <div class="div-center-xx-large">Welcome to Sandbox!</div>
+        ​<hr />
+        
+        <h:form id="loginForm">
+                
+	        <div class="div-center-large">
+	        	User: <p:inputText id="username" value="#{loginController.userBean.username}" />            
+	        	Password: <p:password id="password" value="#{loginController.userBean.password}" />
+	        	
+	        	<h:outputText value="&#160;" />	        	
+	        	<p:commandButton action="#{loginController.loginAccess}" id="iconOnly" icon="ui-icon-circle-arrow-e" ajax="false" />
+	        </div>
+	        	        	                
+        </h:form>
+    </h:body>  
+</html>  

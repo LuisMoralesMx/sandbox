@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html 
+	xmlns="http://www.w3.org/1999/xhtml"  
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+   	xmlns:h="http://java.sun.com/jsf/html"  
+    xmlns:f="http://java.sun.com/jsf/core"  
+    xmlns:p="http://primefaces.org/ui">  
+  
+    <h:head>    
+    	<title>Sandbox | HR View Candidate List</title>
+    </h:head>  
+
+    <h:body>
+    	
+    	<!-- HEADER -->
+    	<ui:insert name="header" >
+		  <ui:include src="/faces/templates/template-header.xhtml" />
+		</ui:insert>
+        
+        <!-- CONTENT -->
+        <div class="div-center-xx-large">HR View Candidate List</div>
+        ​​<hr width="50%" />
+        <br></br>
+        
+        <h:form id="hrCandidateFormId"> 
+               
+	        <p:dataTable 
+	        	id="candidateTableId"
+	        	var="bean" 
+	        	value="#{humanResourcesController.hrCandidateList}" 
+	        	paginator="true"
+	        	paginatorPosition="bottom"
+	        	scrollable="true" 
+	        	scrollHeight="500"
+	        	rows="30"
+				style="font-size:12px;">	       
+	        	
+	        	<f:facet name="header">
+		        	<div align="right">
+			        	<h:commandLink>
+			                <h:graphicImage library="images" name="excel.png" width="24" />
+			                <p:dataExporter type="xls" target="candidateTableId" fileName="hr-candidates-list" />
+		   				</h:commandLink>
+	   				</div>
+   				</f:facet>
+	        
+			    <p:column headerText="Prefix" sortBy="#{bean.namePrefix}" width="60">
+			        <h:outputText value="#{bean.namePrefix}" />
+			    </p:column>
+			 
+			    <p:column headerText="First Name" sortBy="#{bean.nameFirst}" width="100">
+			        <h:outputText value="#{bean.nameFirst}" />
+			    </p:column>
+			 
+			    <p:column headerText="Last Name" sortBy="#{bean.nameLast}" width="100">
+			        <h:outputText value="#{bean.nameLast}" />
+			    </p:column>
+			    
+			    <p:column headerText="Address Type" sortBy="#{bean.addrType}" width="95">
+			        <h:outputText value="#{bean.addrType}" />
+			    </p:column>
+			    
+			    <p:column headerText="Country" sortBy="#{bean.addrLocCountryRegion}" width="90">
+			        <h:outputText value="#{bean.addrLocCountryRegion}" />
+			    </p:column>
+			    
+			    <p:column headerText="State" sortBy="#{bean.addrLocState}" width="110">
+			        <h:outputText value="#{bean.addrLocState}" />
+			    </p:column>
+			    
+			    <p:column headerText="City" sortBy="#{bean.addrLocCity}" width="80">
+			        <h:outputText value="#{bean.addrLocCity}" />
+			    </p:column>
+			    
+			    <p:column headerText="Zip Code" sortBy="#{bean.addrPostalCode}" width="80">
+			        <h:outputText value="#{bean.addrPostalCode}" />
+			    </p:column>
+			    
+			    <p:column headerText="Email" sortBy="#{bean.email}">
+			        <h:outputText value="#{bean.email}" />
+			    </p:column>
+			    
+			    <p:column headerText="Website" sortBy="#{bean.website}">
+			        <h:outputText value="#{bean.website}" />
+			    </p:column>
+			    
+			</p:dataTable>	
+				
+		</h:form>
+        
+		<!-- FOOTER -->
+		<ui:insert name="footer" >
+		  <ui:include src="/faces/templates/template-footer.xhtml" />
+		</ui:insert>     
+    </h:body>
+</html>  

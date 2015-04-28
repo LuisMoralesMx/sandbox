@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14285999607690" configfile="/Sandbox/WebContent/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="index.xhtml" x="122" y="370" id="pf14290318541060" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf142904628272927 pf14298922504693" path="/login.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="faces/welcome.xhtml" x="122" y="946" id="pf142904602149726" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf14297121450090 pf14297121450151 pf14298922504694" path="*"/>
+  <nodes xsi:type="pageflow:PFPage" name="faces/error.xhtml" x="338" y="562" id="pf142904628272928" referenceLink="//@navigationRule.1/@navigationCase.2/@toViewId|" inlinks="pf142904628272927 pf14297121450151" path="/faces/error.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="faces/view-hr-employees.xhtml" x="338" y="946" id="pf14297121450152" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf14297121450090" path="/faces/reports/view-hr-employees.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="faces/index.xhtml" x="338" y="178" id="pf14298922504705" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf14298922504693" path="/faces/index.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="faces/reports/view-hr-candidates.xhtml" x="338" y="1330" id="pf14298922504706" referenceLink="//@navigationRule.1/@navigationCase.1/@toViewId|" inlinks="pf14298922504694" path="/faces/reports/view-hr-candidates.xhtml"/>
+  <links id="pf142904628272927" target="pf142904628272928" source="pf14290318541060" outcome="failure" redirect="true"/>
+  <links id="pf14297121450090" target="pf14297121450152" source="pf142904602149726" outcome="success" redirect="true" fromaction="#{humanResourcesController.viewHrEmployees}"/>
+  <links id="pf14297121450151" target="pf142904628272928" source="pf142904602149726" outcome="error" redirect="true"/>
+  <links id="pf14298922504693" target="pf14298922504705" source="pf14290318541060" outcome="success" redirect="true" fromaction="#{loginController.loginAccess}"/>
+  <links id="pf14298922504694" target="pf14298922504706" source="pf142904602149726" outcome="success" redirect="true" fromaction="#{humanResourcesController.viewHrCandidates}"/>
+</pageflow:Pageflow>

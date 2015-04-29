@@ -30,7 +30,7 @@ public class HrService {
 		try {
 			
 			propertyUtils = new PropertyUtils();
-			preparedStatement = connection.prepareStatement(propertyUtils.getPropertyValue("db.get.hr.employees"));
+			preparedStatement = connection.prepareStatement(propertyUtils.getDbPropertyValue("db.get.hr.employees"));
 			resultSet = preparedStatement.executeQuery();
 			
 			while (resultSet.next()) {
@@ -81,7 +81,7 @@ public class HrService {
 		try {
 			
 			propertyUtils = new PropertyUtils();
-			preparedStatement = connection.prepareStatement(propertyUtils.getPropertyValue("db.get.hr.candidates"));
+			preparedStatement = connection.prepareStatement(propertyUtils.getDbPropertyValue("db.get.hr.candidates"));
 			resultSet = preparedStatement.executeQuery();
 			
 			while (resultSet.next()) {

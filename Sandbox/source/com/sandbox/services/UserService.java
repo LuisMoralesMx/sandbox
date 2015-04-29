@@ -28,7 +28,7 @@ public class UserService {
 		try {
 			
 			propertyUtils = new PropertyUtils();
-			preparedStatement = connection.prepareStatement(propertyUtils.getPropertyValue("db.insert.user.credentials"));
+			preparedStatement = connection.prepareStatement(propertyUtils.getDbPropertyValue("db.insert.user.credentials"));
 			preparedStatement.setString(1, accountRegistrationBean.getFirstName());
 			preparedStatement.setString(2, accountRegistrationBean.getLastName());
 			preparedStatement.setString(3, accountRegistrationBean.getEmail());
@@ -61,7 +61,7 @@ public class UserService {
 		try {
 			
 			propertyUtils = new PropertyUtils();
-			preparedStatement = connection.prepareStatement(propertyUtils.getPropertyValue("db.get.user.credentials"));
+			preparedStatement = connection.prepareStatement(propertyUtils.getDbPropertyValue("db.get.user.credentials"));
 			preparedStatement.setString(1, username);
 			preparedStatement.setString(2, password);
 			

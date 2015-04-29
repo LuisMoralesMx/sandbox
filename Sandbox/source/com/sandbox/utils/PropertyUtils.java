@@ -8,22 +8,23 @@ import java.util.Properties;
 public class PropertyUtils {
 
 	private Properties prop = null;
-
-	public PropertyUtils() {
-
+	
+	public String getDbPropertyValue(String key) {
+		
 		InputStream is = null;
+		
 		try {
-			this.prop = new Properties();
-			is = this.getClass().getResourceAsStream("/com/sandbox/resources/db.properties");
+			
+			prop = new Properties();			
+			is = getClass().getResourceAsStream("/com/sandbox/resources/db.properties");
 			prop.load(is);
+						
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
-
-	public String getPropertyValue(String key) {
-		return this.prop.getProperty(key);
-	}
+				
+		return prop.getProperty(key);		
+	}	
 }

@@ -43,6 +43,10 @@ public class UserService {
 			
 		} catch(Exception ex) {
 			System.out.println(ex);
+			
+		} finally {
+			DatabaseSQLLite.closePreparedStatement(preparedStatement);
+			DatabaseSQLLite.closeConnection(connection);
 		}
 		
 		return registrationFlag;

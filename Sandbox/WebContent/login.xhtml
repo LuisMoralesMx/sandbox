@@ -31,26 +31,26 @@
 	        
 	        <p:growl id="growl" sticky="false" showDetail="true" life="2000" />
 	        
-	        <p:dialog header="Account Registration" widgetVar="accountDialog" resizable="false" modal="false" dynamic="true" >
+	        <p:dialog header="Account Registration" widgetVar="accountDialog" resizable="false" modal="false" dynamic="true" position="500, 150" >
 	        	
 	        	<!-- ui:include src="/faces/includes/accountRegistration.xhtml"/ -->
 	        	
 	        	<h:panelGrid columns="2" cellpadding="5">
         	
 	        		<h:outputLabel for="acctUsername" value="Username" />
-	            	<p:inputText id="acctUsername" value="#{loginController.accountRegistrationBean.username}" required="true" label="username" />
+	            	<p:inputText id="acctUsername" value="#{loginController.accountRegistrationBean.username}" required="true" label="Username" />
 	            	
 	            	<h:outputLabel for="acctpassword" value="Password" />
-	            	<p:password id="acctpassword" value="#{loginController.accountRegistrationBean.password}" required="true" label="password" />
+	            	<p:password id="acctpassword" value="#{loginController.accountRegistrationBean.password}" required="true" label="Password" />
 	        	
 	            	<h:outputLabel for="acctFirstname" value="First Name" />
-	            	<p:inputText id="acctFirstname" value="#{loginController.accountRegistrationBean.firstName}" required="true" label="firstname" />
+	            	<p:inputText id="acctFirstname" value="#{loginController.accountRegistrationBean.firstName}" required="true" label="First Name" />
 	 
 	            	<h:outputLabel for="acctLastname" value="Last Name" />
-	            	<p:inputText id="acctLastname" value="#{loginController.accountRegistrationBean.lastName}" required="true" label="lastname" />
+	            	<p:inputText id="acctLastname" value="#{loginController.accountRegistrationBean.lastName}" required="true" label="Last Name" />
 	            	
 	            	<h:outputLabel for="acctEmail" value="Email" />
-	            	<p:inputText id="acctEmail" value="#{loginController.accountRegistrationBean.email}" required="true" label="email" />
+	            	<p:inputText id="acctEmail" value="#{loginController.accountRegistrationBean.email}" required="true" label="Email" />
 	             	
 	             	<f:facet name="footer">
 		                <p:commandButton value="Create Account!" update="growl" actionListener="#{loginController.registerAccount}" 

@@ -2,9 +2,10 @@
 <!DOCTYPE html>
 <html 
 	xmlns="http://www.w3.org/1999/xhtml"  
+	xmlns:ui="http://java.sun.com/jsf/facelets"
    	xmlns:h="http://java.sun.com/jsf/html"  
     xmlns:f="http://java.sun.com/jsf/core"  
-    xmlns:p="http://primefaces.org/ui">  
+    xmlns:p="http://primefaces.org/ui"> 
   
     <h:head>    
     	<h:outputStylesheet library="css" name="style.css"  />    
@@ -22,8 +23,55 @@
 	        	
 	        	<h:outputText value="&#160;" />	        	
 	        	<p:commandButton action="#{loginController.loginAccess}" id="iconOnly" icon="ui-icon-circle-arrow-e" ajax="false" />
+	        	
+	        	<h:outputText value="&#160;" />
+	        	<h:outputLink onclick="PF('accountDialog').show(); return false;">Want an account?</h:outputLink>
+	        	
 	        </div>
+	        
+	        <p:growl id="growl" sticky="false" showDetail="true" life="2000" />
+	        
+	        <p:dialog header="Account Registration" widgetVar="accountDialog" resizable="false" modal="false" dynamic="true" >
+	        	
+	        	<!-- ui:include src="/faces/includes/accountRegistration.xhtml"/ -->
+	        	
+	        	<h:panelGrid columns="2" cellpadding="5">
+        	
+	        		<h:outputLabel for="acctUsername" value="Username" />
+	            	<p:inputText id="acctUsername" value="#{loginController.accountRegistrationBean.username}" required="true" label="username" />
+	            	
+	            	<h:outputLabel for="acctpassword" value="Password" />
+	            	<p:password id="acctpassword" value="#{loginController.accountRegistrationBean.password}" required="true" label="password" />
+	        	
+	            	<h:outputLabel for="acctFirstname" value="First Name" />
+	            	<p:inputText id="acctFirstname" value="#{loginController.accountRegistrationBean.firstName}" required="true" label="firstname" />
+	 
+	            	<h:outputLabel for="acctLastname" value="Last Name" />
+	            	<p:inputText id="acctLastname" value="#{loginController.accountRegistrationBean.lastName}" required="true" label="lastname" />
+	            	
+	            	<h:outputLabel for="acctEmail" value="Email" />
+	            	<p:inputText id="acctEmail" value="#{loginController.accountRegistrationBean.email}" required="true" label="email" />
+	             	
+	             	<f:facet name="footer">
+		                <p:commandButton value="Create Account!" update="growl" actionListener="#{loginController.registerAccount}" 
+		                	oncomplete="handleLoginRequest(xhr, status, args)" />
+	            	</f:facet> 
+             	  
+        		</h:panelGrid>
+	        	
+			</p:dialog>
 	        	        	                
         </h:form>
+        
+        <script type="text/javascript">
+	    	function handleLoginRequest(xhr, status, args) {
+	        	if(args.validationFailed || !args.registrationFlag) {
+	            	PF('accountDialog').jq.effect("shake", {times:5}, 100);
+	        	
+	        	} else {
+	            	PF('accountDialog').hide();
+	        	}
+	   	 	}
+		</script>  
     </h:body>  
 </html>  

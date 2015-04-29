@@ -5,6 +5,9 @@ public class Constants {
 	// Project Standards
 	public final static String EMPTY_STRING = "";
 	
+	// Call-backs Flags
+	public final static String CALLBACK_REGISTRATION_FLAG = "registrationFlag";
+	
 	// DB Configuration
 	public final static String DB_MSSQL_SERVER = "";
 	public final static String DB_MSSQL_DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";	

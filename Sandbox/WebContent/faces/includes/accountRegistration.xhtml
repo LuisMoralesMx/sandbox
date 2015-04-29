@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html 
+	xmlns="http://www.w3.org/1999/xhtml"  
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+   	xmlns:h="http://java.sun.com/jsf/html"  
+    xmlns:f="http://java.sun.com/jsf/core"  
+    xmlns:p="http://primefaces.org/ui">
+          
+    <h:body>
+        <h:form id = "accountRegistrationForm">
+        	<h:panelGrid columns="2" cellpadding="5">
+        	
+        		<h:outputLabel for="username" value="Username" />
+            	<p:inputText id="username" value="#{loginController.accountRegistrationBean.username}" required="true" label="username" />
+            	
+            	<h:outputLabel for="password" value="Password" />
+            	<p:inputText id="password" value="#{loginController.accountRegistrationBean.password}" required="true" label="password" />
+        	
+            	<h:outputLabel for="firstname" value="First Name" />
+            	<p:inputText id="firstname" value="#{loginController.accountRegistrationBean.firstName}" required="true" label="firstname" />
+ 
+            	<h:outputLabel for="lastname" value="Last Name" />
+            	<p:password id="lastname" value="#{loginController.accountRegistrationBean.lastName}" required="true" label="lastname" />
+            	
+            	<h:outputLabel for="email" value="Email" />
+            	<p:password id="email" value="#{loginController.accountRegistrationBean.email}" required="true" label="email" />
+             	
+             	<f:facet name="footer">
+                <p:commandButton value="Login" update="growl" actionListener="#{loginController.accountRegistrationBean}"
+                                 oncomplete="handleLoginRequest(xhr, status, args)" />
+            	</f:facet> 
+             	  
+        	</h:panelGrid>
+        </h:form>           
+    </h:body>
+</html>  

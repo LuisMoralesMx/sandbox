@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.sandbox.beans.UserBean;
 import com.sandbox.connection.DatabaseSQLLite;
 import com.sandbox.utils.Constants;
 import com.sandbox.utils.PropertyUtils;
@@ -13,6 +14,39 @@ import com.sandbox.utils.PropertyUtils;
 public class UserService {
 	
 	private PropertyUtils propertyUtils;
+	
+	public Boolean createUserAccount(UserBean accountRegistrationBean) {
+		
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		int updateCount = 0;
+		boolean registrationFlag = false;
+		
+		connection = DatabaseSQLLite.getConnection();
+		
+		try {
+			
+			propertyUtils = new PropertyUtils();
+			preparedStatement = connection.prepareStatement(propertyUtils.getPropertyValue("db.insert.user.credentials"));
+			preparedStatement.setString(1, accountRegistrationBean.getFirstName());
+			preparedStatement.setString(2, accountRegistrationBean.getLastName());
+			preparedStatement.setString(3, accountRegistrationBean.getEmail());
+			preparedStatement.setString(4, accountRegistrationBean.getUsername());
+			preparedStatement.setString(5, accountRegistrationBean.getPassword());
+			
+			updateCount = preparedStatement.executeUpdate();
+			
+			if(updateCount > 0) {
+			    registrationFlag = true;
+			}
+			
+		} catch(Exception ex) {
+			System.out.println(ex);
+		}
+		
+		return registrationFlag;
+	}
 	
 	public Map<String, String> getUserCredentials(String username, String password) {
 		

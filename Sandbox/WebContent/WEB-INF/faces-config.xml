@@ -15,6 +15,11 @@
 			<property-class>com.sandbox.beans.UserBean</property-class>
 			<value>#{userBean}</value>
 		</managed-property>
+		<managed-property>
+			<property-name>accountRegistrationBean</property-name>
+			<property-class>com.sandbox.beans.UserBean</property-class>
+			<value>#{userBean}</value>
+		</managed-property>
 	</managed-bean>
 	
 	<managed-bean>

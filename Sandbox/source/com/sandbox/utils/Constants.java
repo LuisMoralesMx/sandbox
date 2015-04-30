@@ -9,7 +9,7 @@ public class Constants {
 	public final static String CALLBACK_REGISTRATION_FLAG = "registrationFlag";
 	
 	// DB Configuration
-	public final static String DB_MSSQL_SERVER = "";
+	public final static String DB_MSSQL_SERVER = "jdbc:sqlserver://mexmonportal01;databaseName=AdventureWorks2008;integratedSecurity=true";
 	public final static String DB_MSSQL_DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";	
 	public final static String DB_SQLLITE_SERVER = "jdbc:sqlite:D:/Development/DB/sqllite/SANDBOX.DB";
 	public final static String DB_SQLLITE_DRIVER = "org.sqlite.JDBC";

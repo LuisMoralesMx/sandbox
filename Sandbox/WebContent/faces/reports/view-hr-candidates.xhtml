@@ -34,6 +34,7 @@
 	        	scrollable="true" 
 	        	scrollHeight="500"
 	        	rows="30"
+	        	rowExpandMode="single"
 				style="font-size:12px;">	       
 	        	
 	        	<f:facet name="header">
@@ -44,7 +45,11 @@
 		   				</h:commandLink>
 	   				</div>
    				</f:facet>
-	        
+	        	
+	        	<p:column style="width:16px">
+	        		<p:rowToggler />
+	        	</p:column>
+	        	
 			    <p:column headerText="Prefix" sortBy="#{bean.namePrefix}" width="60">
 			        <h:outputText value="#{bean.namePrefix}" />
 			    </p:column>
@@ -84,8 +89,21 @@
 			    <p:column headerText="Website" sortBy="#{bean.website}">
 			        <h:outputText value="#{bean.website}" />
 			    </p:column>
-			    
-			</p:dataTable>	
+
+			    <p:rowExpansion>
+		            <p:panelGrid columns="1" >
+		            	<f:facet name="header">
+		            		<h:outputText value="Skills" />
+		            	</f:facet>
+		            	<p:row>
+		            		<p:column>
+		            			<h:outputText value="#{bean.skills}" />
+		            		</p:column>
+		            	</p:row>
+		            </p:panelGrid>
+       	 		</p:rowExpansion>
+
+			</p:dataTable>
 				
 		</h:form>
         
